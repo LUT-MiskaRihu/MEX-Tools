@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+	<h1>MEX-Tools</h1>
+    <h2>Rajoitettu kuuntelu</h2>
+    <p>Tämä työkalu generoi XML-koodin rajoitettua kuuntelua varten.</p>
+    
+    <h3>Liitetiedosto</h3>
+    <p>Anna liitetiedoston nimi tiedostopäätteen kanssa.<br />(esim. "kuuntelu2.mp3")</p>
+    <input id="txtFilename" />
+	
+    <h3>Äänitteen otsikko</h3>
+    <p>Anna äänitteen otsikko.<br />(esim. "The whole recording")<br />(esim. "The passage related to question 1.1.")</p>
+    <input id="txtTitle" />
+    
+    <h3>Kuuntelukertojen lukumäärä</h3>
+    <p>Anna kuuntelukertojen maksimilukumäärä.</p>
+    <input id="txtMaxTimes" />
+    
+    <h3>Koodin generointi</h3>
+    <p><button id="btnGenerateCode" onclick="generate()">Generoi XML-koodi</button></p>
+    <pre id="code" style="color:red"></pre>
+    
+</body>
+</html>
+
+<script>
+
+function generate()
+{
+	var filename = document.getElementById("txtFilename").value;
+	var times = document.getElementById("txtMaxTimes").value;
+	var title = document.getElementById("txtTitle").value;
+	var outputField = document.getElementById("code");
+	
+	outputField.innerHTML = "";
+
+	if (filename == "")
+	{
+		outputField.innerHTML += "Liitetiedoston nimi ei voi olla tyhjä!\n"
+	}
+	
+	if (times == "")
+	{
+		outputField.innerHTML += "Kuuntelukertojen lukumäärä ei voi olla tyhjä!\n"
+	}
+
+	else
+	{
+		outputField.innerHTML = 
+			"&lt;e:audio src=" + filename + " times=" + times + "&gt;\n" +
+			"\t&lt;e:audio-title&gt;" + title + "&lt;/e:audio-title&gt;\n" +
+			"&lt;/e:audio&gt;";
+	}
+}
+
+</script>
