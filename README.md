@@ -1,3 +1,3 @@
 # MEX-Tools
 
-Käyttöohjeet: https://github.com/LUT-MiskaRihu/MEX-Tools/wiki
+Lisätietoja ja ohjeita löydät wikistä: https://github.com/LUT-MiskaRihu/MEX-Tools/wiki
